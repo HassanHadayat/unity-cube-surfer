@@ -6,12 +6,12 @@ public class Cube : MonoBehaviour
 
     private void OnCollisionEnter(Collision collision)
     {
-        if (transform.CompareTag("Player"))
+        if (transform.CompareTag("PlayerCube"))
         {
             if (collision.collider.CompareTag("Cube"))
             {
                 // Player's Cube Collided With Collectable Cube
-                collision.collider.gameObject.tag = "Player";
+                collision.collider.gameObject.tag = "PlayerCube";
                 // DeActivate Cube Game Object
                 collision.collider.gameObject.SetActive(false);
 
@@ -23,7 +23,7 @@ public class Cube : MonoBehaviour
                 Debug.Log(transform.name);
                 collision.collider.tag = "Untagged";
 
-                // Change tag from Player to Cube
+                // Change tag from PlayerCube to Cube
                 transform.tag = "Cube";
 
                 CubeStackManager.RemoveCube(this.gameObject);

@@ -6,6 +6,8 @@ TagManager:
   tags:
   - Cube
   - Hurdle
+  - PlayerCube
+  - FinishLine
   layers:
   - Default
   - TransparentFX

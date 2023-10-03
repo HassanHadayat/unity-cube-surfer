@@ -1,58 +1,33 @@
+using PathCreation;
 using UnityEngine;
+using UnityEngine.UIElements;
 
 public class PlayerMovement : MonoBehaviour
 {
-    [SerializeField] private Transform playerTrans;
-    [SerializeField] private float forwardSpeed;
     [SerializeField] private float horizontalSpeed;
     public float horizontalLimit;
 
-    private Vector2 touchStartPos;
-    private Vector2 touchEndPos;
+    public float maxX;
+    public float minX;
 
-    private void Update()
+    private Touch currTouch;
+
+    private void LateUpdate()
     {
-        // Move Forward
-        playerTrans.Translate(Vector3.forward * forwardSpeed * Time.deltaTime);
-
         if (Input.touchCount > 0)
         {
-            Touch touch = Input.GetTouch(0);
+            currTouch = Input.GetTouch(0);
 
-            if (touch.phase == TouchPhase.Began)
+            if (currTouch.phase == TouchPhase.Moved)
             {
-                touchStartPos = touch.position;
+
+                float newX = currTouch.deltaPosition.x * horizontalSpeed * Time.deltaTime;
+                Vector3 newPos = transform.localPosition;
+                newPos.x += newX;
+                newPos.x = Mathf.Clamp(newPos.x, minX, maxX);
+
+                transform.localPosition = newPos;
             }
-            else if (touch.phase == TouchPhase.Moved || touch.phase == TouchPhase.Stationary)
-            {
-                touchEndPos = touch.position;
-                HandleTouchInput();
-            }
-        }
-
-        if (playerTrans.position.x > horizontalLimit)
-        {
-            playerTrans.position = new Vector3(horizontalLimit, playerTrans.position.y, playerTrans.position.z);
-        }
-        else if (playerTrans.position.x < -horizontalLimit)
-        {
-            playerTrans.position = new Vector3(-horizontalLimit, playerTrans.position.y, playerTrans.position.z);
-        }
-    }
-
-    private void HandleTouchInput()
-    {
-        float horizontalInput = (touchEndPos.x - touchStartPos.x) / Screen.width;
-
-        if (horizontalInput > 0)
-        {
-            // Move Rightward
-            playerTrans.Translate(Vector3.right * horizontalSpeed * Time.deltaTime * horizontalInput);
-        }
-        else if (horizontalInput < 0)
-        {
-            // Move Leftward
-            playerTrans.Translate(Vector3.left * horizontalSpeed * Time.deltaTime * -horizontalInput);
         }
     }
 }
