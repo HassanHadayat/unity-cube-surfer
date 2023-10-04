@@ -32,4 +32,23 @@ public class Cube : MonoBehaviour
 
     }
 
+    private void OnTriggerEnter(Collider other)
+    {
+        if (other.CompareTag("FinishLine"))
+        {
+            if (CubeStackManager)
+            {
+                CubeStackManager.GetComponent<PlayerMovement>().ReachFinishLine();
+            }
+        }
+        
+        if (other.CompareTag("FinalDest"))
+        {
+            if (CubeStackManager)
+            {
+                CubeStackManager.GetComponent<PlayerMovement>().ReachFinalDest();
+            }
+        }
+    }
+
 }

@@ -8,6 +8,7 @@ TagManager:
   - Hurdle
   - PlayerCube
   - FinishLine
+  - FinalDest
   layers:
   - Default
   - TransparentFX

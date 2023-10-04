@@ -9,7 +9,7 @@ public class CubeStackManager : MonoBehaviour
     public List<GameObject> cubes;
 
     public Transform characterTrans;
-
+    public Animator characterAnimController;
 
     public void AddCube(GameObject cube)
     {
@@ -21,6 +21,7 @@ public class CubeStackManager : MonoBehaviour
             cubesTrans.position.z
             );
         characterTrans.position = newPos + (Vector3.up * 0.01f);
+        characterAnimController.SetTrigger("Jump");
 
         cube.transform.position = newPos;
         Cube cubeGO = cube.GetComponent<Cube>();
