@@ -9,6 +9,7 @@ TagManager:
   - PlayerCube
   - FinishLine
   - FinalDest
+  - Step
   layers:
   - Default
   - TransparentFX

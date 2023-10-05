@@ -21,6 +21,8 @@ public class CameraManager : MonoBehaviour
         {
             Instance = this;
         }
+
+        Application.targetFrameRate = Screen.currentResolution.refreshRate;
     }
     private void Start()
     {

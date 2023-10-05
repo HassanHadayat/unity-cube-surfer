@@ -54,14 +54,16 @@ public class PlayerMovement : MonoBehaviour
                 newPos.x = Mathf.Clamp(newPos.x, min_X, max_X);
 
                 m_bodyTrans.localPosition = newPos;
+
             }
+
         }
     }
 
     public void ReachFinishLine()
     {
         isReachedFinishLine = true;
-        m_Trail.SetActive(false);
+        //m_Trail.SetActive(false);
         m_Animator.Play("Running");
     }
 
