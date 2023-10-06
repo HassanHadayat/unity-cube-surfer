@@ -1,6 +1,5 @@
 using System.Collections.Generic;
 using UnityEngine;
-using static Cube;
 
 public class CubeStackManager : MonoBehaviour
 {
@@ -10,6 +9,10 @@ public class CubeStackManager : MonoBehaviour
 
     public Transform characterTrans;
     public Animator characterAnimController;
+    public ParticleSystem characterParticles;
+
+    public Transform dynamicTrans;
+
 
     public void AddCube(GameObject cube)
     {
@@ -20,9 +23,12 @@ public class CubeStackManager : MonoBehaviour
             (cubes.Count * 0.53f + (0.075f * cubes.Count)), // cubesCount * cubelenght * effectHieght
             cubesTrans.position.z
             );
-        characterTrans.position = newPos + (Vector3.up * 0.01f);
+        characterTrans.position = newPos + (Vector3.up * 0.4f);
+        characterParticles.Play();
         characterAnimController.SetTrigger("Jump");
 
+
+        cube.transform.rotation = Quaternion.identity;
         cube.transform.position = newPos;
         Cube cubeGO = cube.GetComponent<Cube>();
         cubeGO.enabled = true;
@@ -32,8 +38,21 @@ public class CubeStackManager : MonoBehaviour
     }
     public void RemoveCube(GameObject cube)
     {
+        // Game End Condition Check
+
+        if (cubes.Count == 1)
+        {
+            characterAnimController.SetTrigger("Fall");
+
+
+            //Game End;
+            GameManager.Instance.EndGame();
+        }
+
+
         cubes.Remove(cube);
-        cube.transform.parent = null;
+        cube.transform.parent = dynamicTrans;
         cube.GetComponent<Cube>().enabled = false;
     }
+
 }

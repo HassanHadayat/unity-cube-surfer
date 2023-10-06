@@ -20,6 +20,8 @@ public class Cube : MonoBehaviour
             }
             else if (collision.collider.CompareTag("Hurdle") || collision.collider.CompareTag("Step"))
             {
+                collision.collider.GetComponent<Collider>().enabled = false;
+
                 Debug.Log(transform.name);
                 collision.collider.tag = "Untagged";
 

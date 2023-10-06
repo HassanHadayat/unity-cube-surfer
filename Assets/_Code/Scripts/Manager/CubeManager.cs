@@ -14,14 +14,14 @@ public class CubeManager : MonoBehaviour
 
     private void Awake()
     {
+        Time.timeScale = 1.0f;
+
         if (Instance != null && Instance != this)
         {
-            Destroy(this);
+            Destroy(Instance);
         }
-        else
-        {
-            Instance = this;
-        }
+        Instance = this;
+
     }
 
     private void Update()
@@ -89,6 +89,7 @@ public class CubeManager : MonoBehaviour
         }
 
 
+        //Debug.Log("Invoking !");
         OnColorChanged?.Invoke(colorMaterials[matIndex].color);
     }
 }
