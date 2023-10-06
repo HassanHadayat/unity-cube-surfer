@@ -30,6 +30,7 @@ public class CubeStackManager : MonoBehaviour
 
         cube.transform.rotation = Quaternion.identity;
         cube.transform.position = newPos;
+
         Cube cubeGO = cube.GetComponent<Cube>();
         cubeGO.enabled = true;
         cubeGO.CubeStackManager = this;
@@ -43,7 +44,6 @@ public class CubeStackManager : MonoBehaviour
         if (cubes.Count == 1)
         {
             characterAnimController.SetTrigger("Fall");
-
 
             //Game End;
             GameManager.Instance.EndGame();

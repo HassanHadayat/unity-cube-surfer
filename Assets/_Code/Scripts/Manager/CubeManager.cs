@@ -24,30 +24,6 @@ public class CubeManager : MonoBehaviour
 
     }
 
-    private void Update()
-    {
-        if (Input.GetKeyUp(KeyCode.Alpha1))
-        {
-            ChangeCubeColor("Green");
-        }
-        else if (Input.GetKeyUp(KeyCode.Alpha2))
-        {
-            ChangeCubeColor("Orange");
-        }
-        else if (Input.GetKeyUp(KeyCode.Alpha3))
-        {
-            ChangeCubeColor("Yellow");
-        }
-        else if (Input.GetKeyUp(KeyCode.Alpha4))
-        {
-            ChangeCubeColor("Purple");
-        }
-        else if (Input.GetKeyUp(KeyCode.Alpha5))
-        {
-            ChangeCubeColor("Blue");
-        }
-    }
-
     private void Start()
     {
         SetCubes();
@@ -89,7 +65,6 @@ public class CubeManager : MonoBehaviour
         }
 
 
-        //Debug.Log("Invoking !");
         OnColorChanged?.Invoke(colorMaterials[matIndex].color);
     }
 }

@@ -15,14 +15,12 @@ public class Cube : MonoBehaviour
                 // DeActivate Cube Game Object
                 collision.collider.gameObject.SetActive(false);
 
-                //CubeStackManager.Add
                 CubeStackManager.AddCube(collision.collider.gameObject);
             }
             else if (collision.collider.CompareTag("Hurdle") || collision.collider.CompareTag("Step"))
             {
                 collision.collider.GetComponent<Collider>().enabled = false;
 
-                Debug.Log(transform.name);
                 collision.collider.tag = "Untagged";
 
                 // Change tag from PlayerCube to Cube
@@ -30,16 +28,6 @@ public class Cube : MonoBehaviour
 
                 CubeStackManager.RemoveCube(this.gameObject);
             }
-            //else if (collision.collider.CompareTag("Step"))
-            //{
-            //    Debug.Log(transform.name);
-            //    collision.collider.tag = "Untagged";
-
-            //    // Change tag from PlayerCube to Cube
-            //    transform.tag = "Cube";
-
-            //    CubeStackManager.RemoveCube(this.gameObject);
-            //}
         }
 
     }

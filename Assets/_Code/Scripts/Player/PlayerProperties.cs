@@ -11,9 +11,6 @@ public class PlayerProperties : MonoBehaviour
     {
         StopTrail();
 
-
-
-
         CubeManager.Instance.OnColorChanged += UpdateProperties;
         GameManager.Instance.OnLevelStartedEvent += StartTrail;
         GameManager.Instance.OnLevelEndedEvent += StopTrail;
@@ -31,13 +28,12 @@ public class PlayerProperties : MonoBehaviour
         mainModule.startColor = new ParticleSystem.MinMaxGradient(color);
 
     }
+
     // Function to darken a color
     private Color Darken(Color color, float factor)
     {
         return new Color(color.r * factor, color.g * factor, color.b * factor, color.a);
     }
-
-
 
     private void StartTrail()
     {

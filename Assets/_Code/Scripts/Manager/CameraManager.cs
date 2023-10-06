@@ -42,7 +42,6 @@ public class CameraManager : MonoBehaviour
     {
         isRotateCam = true;
 
-
         rotateCam.Priority = 2;
         followCam.Priority = 1;
     }

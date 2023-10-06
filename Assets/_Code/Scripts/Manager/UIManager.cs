@@ -41,18 +41,12 @@ public class UIManager : MonoBehaviour
     {
         UIAnimController.Play("LevelStart");
 
-
-        //gameStartPanel.SetActive(false);
-        //gamePlayPanel.SetActive(true);
-
-
         // Start Game
         GameManager.Instance.StartGame();
     }
 
     public void ShowGameEndPanel(bool isCompleted = false)
     {
-        Debug.Log("End Panel Testing " + isCompleted);
         gameStartPanel.SetActive(false);
         gamePlayPanel.SetActive(true);
         gameEndPanel.SetActive(true);

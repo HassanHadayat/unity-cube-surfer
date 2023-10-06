@@ -42,6 +42,7 @@ public class PlayerMovement : MonoBehaviour
         {
             // Player Parent Follow Path
             distanceTravelled += forwardSpeed * Time.deltaTime;
+            
             transform.position = pathCreator.path.GetPointAtDistance(distanceTravelled, EndOfPathInstruction.Stop);
             transform.rotation = pathCreator.path.GetRotationAtDistance(distanceTravelled, EndOfPathInstruction.Stop);
         }
@@ -99,7 +100,7 @@ public class PlayerMovement : MonoBehaviour
         // Show The Game End Panel 
 
         UIManager.Instance.ShowGameEndPanel(isReachedFinishLine);
-        // ----------------------NEED IMPROVEMENT
+        // ---------------------- NEED IMPROVEMENT
 
     }
 
