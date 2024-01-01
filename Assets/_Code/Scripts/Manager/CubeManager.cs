@@ -1,6 +1,6 @@
 using System.Diagnostics.Tracing;
 using UnityEngine;
-
+using UnityEngine.UI;
 
 public class CubeManager : MonoBehaviour
 {
@@ -8,7 +8,7 @@ public class CubeManager : MonoBehaviour
 
     public Cube[] cubes;
     public Material[] colorMaterials;
-
+    public Image[] colorBtnImgs;
     public delegate void ColorChanged(Color color);
     public event ColorChanged OnColorChanged;
 
@@ -29,6 +29,7 @@ public class CubeManager : MonoBehaviour
         SetCubes();
 
         ChangeCubeColor("Green");
+        SetUICubesColor();
     }
     public void SetCubes()
     {
@@ -66,5 +67,15 @@ public class CubeManager : MonoBehaviour
 
 
         OnColorChanged?.Invoke(colorMaterials[matIndex].color);
+    }
+
+    private void SetUICubesColor()
+    {
+        if (colorBtnImgs.Length != colorMaterials.Length) return;
+
+        for (int i = 0; i < colorBtnImgs.Length; i++)
+        {
+            colorBtnImgs[i].color = colorMaterials[i].color;
+        }
     }
 }
